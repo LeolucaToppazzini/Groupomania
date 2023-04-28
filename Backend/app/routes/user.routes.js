@@ -5,7 +5,8 @@ module.exports = app => {
     var router = require("express").Router();
 
     // Create a new user
-    router.post("/", users.create);
+    router.post("/signup", users.signup);
+    router.post('/login', users.login);
     // Delete a Tutorial with id
     //router.delete("/:id", tutorials.delete);
     // Retrieve all Tutorials

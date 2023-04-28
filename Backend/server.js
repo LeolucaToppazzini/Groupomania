@@ -13,13 +13,28 @@ db.sequelize.sync()
     });
 
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "*"
 };
 
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(express.json());
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    );
+    res.header(
+        "Access-Control-Allow-Methods",
+        "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    );
+    next();
+});
+
+
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
@@ -29,8 +44,16 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to Grupomania application." });
 });
 
+
+
+
+
+
+
+require("./app/routes/post.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/user.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

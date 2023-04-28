@@ -1,6 +1,13 @@
+
+
+
+
+
+
+
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define("user", {
-        mail: {
+        email: {
             type: Sequelize.STRING
         },
         password: {
@@ -10,3 +17,4 @@ module.exports = (sequelize, Sequelize) => {
 
     return User;
 };
+
