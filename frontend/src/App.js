@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Login from './Pages/Login';
 
 import Singup from "./Pages/Singup";
+import CreatePost from "./Pages/CreatePost";
 /**
  * nav will show on every page.
  * if an element is outside of `Routes` but inside of Router
@@ -15,12 +16,12 @@ function App() {
         <nav>
             <Link to="/users/signup">Singup</Link>
             <Link to="/users/login">Login</Link>
-
+            <Link to="/post">CreatePost</Link>
         </nav>
         <Routes>
             <Route path="/users/signup" element={<Singup />} />
             <Route path="/users/login" element={<Login />} />
-
+            <Route path="/post" element={<CreatePost />} />
         </Routes>
 
     </Router>

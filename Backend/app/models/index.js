@@ -27,5 +27,5 @@ db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.users = require("./user.model")(sequelize, Sequelize);
-
+db.viewpost = require("./viewposts.model")(sequelize, Sequelize);
 module.exports = db;

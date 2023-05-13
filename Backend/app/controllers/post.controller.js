@@ -6,7 +6,7 @@ exports.createPost = async (req, res) => {
     try {
         const imageUrl = req.file ? `${req.file.filename}` : null;
         const userId = req.user_id;
-        const userExist = await db.User.findOne({ where: { user_id: userId } });
+        const userExist = await db.users.findOne({ where: { id: userId } });
         if (userExist) {
             await db.Post.create({
                 post_content: req.body.content,
