@@ -22,9 +22,9 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     Tutorial.associate = function(models) {
-        Tutorial.belongsTo(db.users, {
+        Tutorial.belongsTo(models.users, {
             foreignKey: 'user_id',
-            as: 'user'
+            as: 'users'
         });
     };
 
