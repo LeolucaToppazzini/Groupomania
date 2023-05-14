@@ -8,7 +8,7 @@ module.exports = app => {
     // Delete a Tutorial with id
     router.delete("/:id", tutorials.delete);
     // Retrieve all Tutorials
-    router.get("/", tutorials.getAllPosts);
+    router.get("/", tutorials.getAllTutorials);
 
 
 

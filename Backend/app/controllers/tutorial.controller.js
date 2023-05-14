@@ -91,66 +91,9 @@ exports.delete = (req, res) => {
             });
         });
 };
-/*
-exports.findAll = (req, res) => {
-    const title = req.query.title;
 
 
-    Tutorial.findAll({ where: {} })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving tutorials."
-            });
-        });
-};
-
- */
-/*
-exports.getAllPosts = async (req, res) => {
-    try {
-        const tutorials = await db.tutorials.findAll({
-            attributes: ["id","user_id", "title", "image_url", "createdAt"],
-            order: [["createdAt", "DESC"]],
-            include: [
-                {
-                    model: db.users,
-                    attributes: ["id", "email"],
-                },
-
-
-            ],
-        });
-        res.status(200).json(tutorials);
-    } catch (error) {
-        return res.status(500).json({ error: error.message });
-    }
-};
-
- */
-
-
-/*
-exports.getAllPosts = (req, res, next) => {
-
-    db.tutorials.findAll({ where: { user_id: db.users.id } })
-
-        .then(posts => res.status(200).json({
-            posts
-        }))
-
-        .catch(error => res.status(400).json({
-            error
-        }))
-
-};
-
-*/
-
-exports.getAllPosts = async (req, res) => {
+exports.getAllTutorials = async (req, res) => {
     try {
         const tutorials = await db.tutorials.findAll({
             attributes: ["id", "title", "image_url", "createdAt"],
@@ -162,6 +105,7 @@ exports.getAllPosts = async (req, res) => {
 
                 },
             ],
+            where: { user_id: db.users.id },
         });
         res.status(200).json(tutorials);
     } catch (error) {
