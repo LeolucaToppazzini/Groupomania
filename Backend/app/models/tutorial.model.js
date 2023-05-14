@@ -15,11 +15,14 @@ module.exports = (sequelize, Sequelize) => {
                 model: 'users',
                 key: 'id'
             }
+        },
+        image_url: {
+            type: Sequelize.STRING
         }
     });
 
     Tutorial.associate = function(models) {
-        Tutorial.belongsTo(models.user, {
+        Tutorial.belongsTo(models.users, {
             foreignKey: 'user_id',
             as: 'user'
         });

@@ -8,17 +8,16 @@ const Op = db.Sequelize.Op;
 
 exports.create = async (req, res) => {
     try {
-        //const imageUrl = req.file ? `${req.file.filename}` : null;
-        //const userId = req.user_id;
+        const url = req.protocol + '://' + req.get('host');
+
+
         const userExist = await db.users.findOne({ where: { id: req.body.user_id } });
         if (userExist) {
             await db.tutorials.create({
                 //userId: req.body.user_id,
                 title: req.body.title,
                 description: req.body.description,
-
-                //post_content: req.body.content,
-                //post_image_url: imageUrl,
+                image_url: url + '/images/' + req.file.filename,
                 user_id: req.body.user_id
             });
             return res.status(201).json({ message: "post pubblicato" });
@@ -92,7 +91,7 @@ exports.delete = (req, res) => {
             });
         });
 };
-
+/*
 exports.findAll = (req, res) => {
     const title = req.query.title;
 
@@ -107,4 +106,65 @@ exports.findAll = (req, res) => {
                     err.message || "Some error occurred while retrieving tutorials."
             });
         });
+};
+
+ */
+/*
+exports.getAllPosts = async (req, res) => {
+    try {
+        const tutorials = await db.tutorials.findAll({
+            attributes: ["id","user_id", "title", "image_url", "createdAt"],
+            order: [["createdAt", "DESC"]],
+            include: [
+                {
+                    model: db.users,
+                    attributes: ["id", "email"],
+                },
+
+
+            ],
+        });
+        res.status(200).json(tutorials);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+ */
+
+
+/*
+exports.getAllPosts = (req, res, next) => {
+
+    db.tutorials.findAll({ where: { user_id: db.users.id } })
+
+        .then(posts => res.status(200).json({
+            posts
+        }))
+
+        .catch(error => res.status(400).json({
+            error
+        }))
+
+};
+
+*/
+
+exports.getAllPosts = async (req, res) => {
+    try {
+        const tutorials = await db.tutorials.findAll({
+            attributes: ["id", "title", "image_url", "createdAt"],
+            order: [["createdAt", "DESC"]],
+            include: [
+                {
+                    model: db.users,
+                    attributes: ["id", "email"]
+
+                },
+            ],
+        });
+        res.status(200).json(tutorials);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
 };

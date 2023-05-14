@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+const path = require('path');
 const app = express();
 
 const db = require("./app/models");
@@ -17,6 +17,9 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+//multer
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // parse requests of content-type - application/json
 app.use(express.json());
