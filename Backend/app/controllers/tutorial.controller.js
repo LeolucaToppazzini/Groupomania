@@ -101,11 +101,12 @@ exports.getAllTutorials = async (req, res) => {
             include: [
                 {
                     model: db.users,
-                    attributes: ["id", "email"]
+                    attributes: ["id", "email"],
+                    as: "user"
 
                 },
             ],
-            where: { user_id: db.users.id },
+            where: { /*user_id: db.users.id */},
         });
         res.status(200).json(tutorials);
     } catch (error) {

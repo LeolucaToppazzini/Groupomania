@@ -7,6 +7,7 @@ module.exports = app => {
     // Create a new user
     router.post("/signup", users.signup);
     router.post('/login', users.login);
+    router.delete("/delete/:id", users.deleteUser)
     // Delete a Tutorial with id
     //router.delete("/:id", tutorials.delete);
     // Retrieve all Tutorials

@@ -24,7 +24,8 @@ module.exports = (sequelize, Sequelize) => {
     Tutorial.associate = function(models) {
         Tutorial.belongsTo(models.users, {
             foreignKey: 'user_id',
-            as: 'users'
+            as: 'user',
+            onDelete: 'CASCADE'
         });
     };
 

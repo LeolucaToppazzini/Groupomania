@@ -1,5 +1,6 @@
 const db = require("../models");
 const User = db.users;
+const Tutorial = db.tutorials
 const Op = db.Sequelize.Op;
 const bcrypt = require('bcrypt');
 
@@ -46,6 +47,49 @@ exports.login = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
+
+
+exports.deleteUser = (req, res) => {
+    User.findOne({
+        where: { id: req.params.id },
+        include: [{ model: Tutorial, as: 'tutorials' }] // Include i tutorial associati all'utente
+    })
+        .then((user) => {
+            if (!user) {
+                return res.status(404).json({ message: "Utente non trovato" });
+            }
+
+            // Elimina o dissocia i tutorial associati all'utente
+            return Promise.all(
+                user.tutorials.map((tutorial) => tutorial.destroy())
+            )
+                .then(() => user.destroy()) // Elimina l'utente dopo aver eliminato i tutorial associati
+                .then(() => res.status(200).json({ message: "Utente cancellato" }));
+        })
+        .catch((error) => res.status(400).json({ error }));
+};
+
+
+
+
+
+
+
+
+/*
+exports.deleteUser = (req, res) => {
+    User.findOne({
+        where: { id: req.params.id },
+    })
+        .then((User) => {
+            User.destroy({ id: req.params.id });
+        })
+        .then(() => res.status(200).json({ message: "Utente cancellato" }))
+        .catch((error) => res.status(400).json({ error }));
+};
+
+ */
+
 
 
 
