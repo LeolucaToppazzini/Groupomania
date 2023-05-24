@@ -8,16 +8,6 @@ function CreatePost() {
     const [description, setPost] = useState('')
     const [file, setFile] = useState('')
 
-    /*
-      useEffect(() => {
-        axios.get('http://192.168.56.1:8080/api/users/3')
-            .then(res => {
-              console.log("gettin from ::::",res.data)
-              setDate(res.data)
-
-            }).catch(err => console.log(err))
-      }, [])
-      */
 
     const postData = (e) => {
         e.preventDefault();
