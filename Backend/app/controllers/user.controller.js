@@ -3,7 +3,7 @@ const User = db.users;
 const Tutorial = db.tutorials
 const Op = db.Sequelize.Op;
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
@@ -35,8 +35,9 @@ exports.login = async (req, res) => {
         if (userExist) {
             const passwordIsValid = await bcrypt.compareSync(req.body.password, userExist.password);
             if (passwordIsValid) {
-
-                return res.status(200).json(console.log("user logged"));
+                const token = jwt.sign({ userId: userExist.user_id }, 'RANDOM_TOKEN_SECRET', { expiresIn: "365d" });
+                return res.cookie("sessionToken", token).status(200).json({ userId: userExist.id, sessionToken: token });
+               // return res.status(200).json(console.log("user logged"));
             } else {
                 return res.status(401).json({ error: "password incorrect" });
             }
