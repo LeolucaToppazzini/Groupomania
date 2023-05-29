@@ -21,13 +21,21 @@ function Login() {
 
     const postData = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8080/api/users/login',{
-                email,
-                password
+        axios.post('http://localhost:8080/api/users/login', {
+            email,
+            password
+        })
+            .then(res => {
+                const { userId, Token } = res.data;
 
-            }
+                // Salvataggio nel Local Storage
+                localStorage.setItem("userId", userId);
+                localStorage.setItem("sessionToken", Token);
 
-        ).then(res => console.log('posting data', res)).catch(err => console.log(err))
+                // Reindirizzamento alla pagina AllPosts.js
+                
+            })
+            .catch(err => console.log(err));
     }
 
 
