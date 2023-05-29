@@ -22,7 +22,7 @@ module.exports = (sequelize, Sequelize) => {
     });
 
     ViewPost.associate = function(models) {
-        ViewPost.belongsTo(models.user, {
+        ViewPost.belongsTo(models.users, {
             foreignKey: 'user_id',
             as: 'user'
         });
@@ -36,32 +36,32 @@ module.exports = (sequelize, Sequelize) => {
 
 
 
-    /*
-    // definizione della relazione many-to-many con il modello User
-    ViewPost.belongsTo(User, {
-        foreignKey: {
-
-            name: 'user_id',
-            allowNull: false
-        },
-        onDelete: 'CASCADE'
-    });
-
-    // definizione della relazione many-to-many con il modello Tutorial
-    ViewPost.belongsTo(Tutorial, {
-        foreignKey: {
-
-            name: 'tutorial_id',
-            allowNull: false
-        },
-        onDelete: 'CASCADE'
-    });
-*/
     return ViewPost;
 };
 
 
 
+/*
+// definizione della relazione many-to-many con il modello User
+ViewPost.belongsTo(User, {
+    foreignKey: {
+
+        name: 'user_id',
+        allowNull: false
+    },
+    onDelete: 'CASCADE'
+});
+
+// definizione della relazione many-to-many con il modello Tutorial
+ViewPost.belongsTo(Tutorial, {
+    foreignKey: {
+
+        name: 'tutorial_id',
+        allowNull: false
+    },
+    onDelete: 'CASCADE'
+});
+*/
 
 /*
 const db = require("../models");

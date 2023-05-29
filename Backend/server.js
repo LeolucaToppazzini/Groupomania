@@ -56,6 +56,7 @@ app.get("/", (req, res) => {
 require("./app/routes/post.routes")(app);
 require("./app/routes/turorial.routes")(app);
 require("./app/routes/user.routes")(app);
+require("./app/routes/viewposts.routes")(app);
 
 
 // set port, listen for requests

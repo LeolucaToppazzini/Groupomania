@@ -37,6 +37,9 @@ db.tutorials.belongsTo(db.users, { foreignKey: 'user_id', as: 'user' });
 // Associazione tra User e Viewpost
 db.users.hasMany(db.viewpost, { foreignKey: 'user_id', as: 'viewposts' });
 db.viewpost.belongsTo(db.users, { foreignKey: 'user_id', as: 'user' });
+// Associazione tra Tutorial e Viewpost
+db.tutorials.hasMany(db.viewpost, { foreignKey: 'tutorial_id', as: 'viewposts' });
+db.viewpost.belongsTo(db.tutorials, { foreignKey: 'tutorial_id', as: 'tutorial' });
 
 
 module.exports = db;
