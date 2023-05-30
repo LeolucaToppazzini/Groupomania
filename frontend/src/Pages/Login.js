@@ -1,8 +1,10 @@
 //import './App.css';
 import axios from "axios";
 import {useEffect,useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Login() {
+    const navigate = useNavigate();
     const [data, setDate] = useState([])
 
     const [email, setEmail] = useState('')
@@ -33,7 +35,7 @@ function Login() {
                 localStorage.setItem("sessionToken", Token);
 
                 // Reindirizzamento alla pagina AllPosts.js
-                
+                navigate("/AllPosts");
             })
             .catch(err => console.log(err));
     }

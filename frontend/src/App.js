@@ -24,7 +24,7 @@ function App() {
             <Route path="/users/signup" element={<Singup />} />
             <Route path="/users/login" element={<Login />} />
             <Route path="/post" element={<CreatePost />} />
-            <Route path="/post" element={<AllPosts />} />
+            <Route path="/allposts" element={<AllPosts />} />
         </Routes>
 
     </Router>
