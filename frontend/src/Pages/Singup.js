@@ -33,7 +33,8 @@ function Singup() {
 
 
     return (
-        <form onSubmit={postData}>
+        <div className="flex-container">
+        <form onSubmit={postData} className="flex-container">
             <label>Email:
                 <input
                     type="text"
@@ -54,7 +55,7 @@ function Singup() {
 
             <input type="submit" />
         </form>
-
+        </div>
     );
 }
 

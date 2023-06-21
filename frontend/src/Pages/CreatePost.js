@@ -16,6 +16,8 @@ function CreatePost() {
         formData.append("image", image);
         formData.append("user_id", localStorage.getItem("userId")); // Aggiunta di user_id
 
+        const jwtToken = localStorage.getItem("sessionToken");
+
         axios
             .post("http://localhost:8080/api/tutorials", formData)
             .then((res) => console.log("posting data", res))
@@ -23,7 +25,7 @@ function CreatePost() {
     };
 
     return (
-        <form onSubmit={postData}>
+        <form onSubmit={postData} className="flex-container">
             <label>
                 Title:
                 <input
@@ -42,7 +44,7 @@ function CreatePost() {
             </label>
 
             <label>
-                Edit your post:
+
                 <textarea
                     type="text"
                     value={description}

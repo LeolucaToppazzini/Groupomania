@@ -1,3 +1,4 @@
+const auth = require("../middleware/auth");
 
 module.exports = app => {
     const viewposts = require("../controllers/viewpost.controller");
@@ -5,7 +6,7 @@ module.exports = app => {
     var router = require("express").Router();
 
     // Create a new Tutorial
-    router.post("/", viewposts.createViewPost);
+    router.post("/",auth, viewposts.createViewPost);
     // Delete a Tutorial with id
 
 

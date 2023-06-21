@@ -1,14 +1,16 @@
+
 module.exports = app => {
     const tutorials = require("../controllers/tutorial.controller.js");
     const multer = require('../middleware/multerConfig')
+    const auth = require('../middleware/auth')
     var router = require("express").Router();
 
     // Create a new Tutorial
-    router.post("/",multer, tutorials.create);
+    router.post("/",auth,multer, tutorials.create);
     // Delete a Tutorial with id
-    router.delete("/:id", tutorials.delete);
+    router.delete("/:id",auth, tutorials.delete);
     // Retrieve all Tutorials
-    router.get("/", tutorials.getAllTutorials);
+    router.get("/",auth, tutorials.getAllTutorials);
 
 
 

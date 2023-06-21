@@ -43,7 +43,8 @@ function Login() {
 
 
     return (
-        <form onSubmit={postData}>
+
+        <form onSubmit={postData} className="flex-container">
             <label>Email:
                 <input
                     type="text"

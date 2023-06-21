@@ -24,13 +24,15 @@ module.exports = (sequelize, Sequelize) => {
     ViewPost.associate = function(models) {
         ViewPost.belongsTo(models.users, {
             foreignKey: 'user_id',
-            as: 'user'
+            as: 'user',
+            onDelete: 'CASCADE'
         });
     },
         ViewPost.associate = function(models) {
             ViewPost.belongsTo(models.tutorials, {
                 foreignKey: 'tutorial_id',
-                as: 'tutorial'
+                as: 'tutorial',
+                onDelete: 'CASCADE'
             });
         };
 
