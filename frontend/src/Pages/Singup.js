@@ -1,10 +1,11 @@
 //import './App.css';
 import axios from "axios";
 import {useEffect,useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 function Singup() {
     const [data, setDate] = useState([])
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -28,12 +29,15 @@ function Singup() {
             }
 
         ).then(res => console.log('posting data', res)).catch(err => console.log(err))
+
+        navigate("/Login");
     }
 
 
 
     return (
         <div className="flex-container">
+            <h2 className="mb-4">singup</h2>
         <form onSubmit={postData} className="flex-container">
             <label>Email:
                 <input

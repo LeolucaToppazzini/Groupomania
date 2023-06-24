@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import {useNavigate} from "react-router-dom";
 
 function CreatePost() {
     const [data, setDate] = useState([]);
-
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setPost] = useState("");
     const [image, setImage] = useState(null);
@@ -19,9 +20,14 @@ function CreatePost() {
         const jwtToken = localStorage.getItem("sessionToken");
 
         axios
-            .post("http://localhost:8080/api/tutorials", formData)
+            .post("http://localhost:8080/api/tutorials", formData, {
+                headers: {
+                    authorization: 'Bearer '+ jwtToken, // Aggiungi il token JWT negli header
+                },
+            })
             .then((res) => console.log("posting data", res))
             .catch((err) => console.log(err));
+        navigate("/AllPosts");
     };
 
     return (

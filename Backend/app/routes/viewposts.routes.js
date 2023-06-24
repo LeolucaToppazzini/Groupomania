@@ -1,4 +1,5 @@
 const auth = require("../middleware/auth");
+const viewposts = require("../controllers/viewpost.controller");
 
 module.exports = app => {
     const viewposts = require("../controllers/viewpost.controller");
@@ -7,6 +8,7 @@ module.exports = app => {
 
     // Create a new Tutorial
     router.post("/",auth, viewposts.createViewPost);
+    router.get("/",auth, viewposts.getAllViewPost);
     // Delete a Tutorial with id
 
 

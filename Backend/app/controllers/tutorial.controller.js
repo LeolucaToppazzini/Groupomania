@@ -96,7 +96,7 @@ exports.delete = (req, res) => {
 exports.getAllTutorials = async (req, res) => {
     try {
         const tutorials = await db.tutorials.findAll({
-            attributes: ["id", "user_id" ,"title", "image_url", "createdAt"],
+            attributes: ["id", "user_id" ,"title","description", "image_url", "createdAt"],
             order: [["createdAt", "DESC"]],
             include: [
                 {

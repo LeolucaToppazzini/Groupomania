@@ -25,3 +25,17 @@ exports.createViewPost = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
+
+exports.getAllViewPost = async (req, res) => {
+    try {
+        const viewposts = await db.viewpost.findAll({
+            attributes: ["id", "user_id" ,"tutorial_id",  "createdAt"],
+            order: [["createdAt", "DESC"]],
+
+            where: { /*user_id: db.users.id */},
+        });
+        res.status(200).json(viewposts);
+    } catch (error) {
+        return res.status(500).json({ error: error.message });
+    }
+};

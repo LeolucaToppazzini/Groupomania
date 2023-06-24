@@ -43,7 +43,8 @@ function Login() {
 
 
     return (
-
+        <div>
+        <h2 className="mb-4">Login</h2>
         <form onSubmit={postData} className="flex-container">
             <label>Email:
                 <input
@@ -65,6 +66,7 @@ function Login() {
 
             <input type="submit" />
         </form>
+        </div>
 
     );
 }
