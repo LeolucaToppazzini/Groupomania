@@ -17,7 +17,8 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         image_url: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            defaultValue: 'default-image.jpg'
         }
     });
 

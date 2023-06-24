@@ -18,13 +18,13 @@ function App() {
             <Link to="/users/signup">Singup</Link>
             <Link to="/users/login">Login</Link>
             <Link to="/post">CreatePost</Link>
-            <Link to="/allposts">AllPosts</Link>
+            <Link to="/">AllPosts</Link>
         </nav>
         <Routes>
             <Route path="/users/signup" element={<Singup />} />
             <Route path="/users/login" element={<Login />} />
             <Route path="/post" element={<CreatePost />} />
-            <Route path="/allposts" element={<AllPosts />} />
+            <Route  path="/" element={<AllPosts />} />
         </Routes>
 
     </Router>

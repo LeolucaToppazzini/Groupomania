@@ -13,11 +13,13 @@ exports.create = async (req, res) => {
 
         const userExist = await db.users.findOne({ where: { id: req.body.user_id } });
         if (userExist) {
+            let imageUrl = req.file ? url + '/images/' + req.file.filename : 'default-image.jpg';
             await db.tutorials.create({
                 //userId: req.body.user_id,
                 title: req.body.title,
                 description: req.body.description,
-                image_url: url + '/images/' + req.file.filename,
+                //image_url: url + '/images/' + req.file.filename,
+                image_url: imageUrl,
                 user_id: req.body.user_id
             });
             return res.status(201).json({ message: "post pubblicato" });

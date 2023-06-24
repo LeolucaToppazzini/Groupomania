@@ -128,16 +128,15 @@ function AllPosts() {
                 );
                 console.log(res)
                 return (
-                    <li
-                        className="card"
-                        key={res.id}
-                    >
+
                         <div className="card-body">
-                            <h2 className="mb-4">{res.user.email}</h2>
-                            <h2 className="mb-4">{res.id}</h2>
-                            <h5 className="card-title">{res.title}</h5>
+                            <h5 className="mb-4">{res.user.email}</h5>
+
+                            <h2 className="card-title">{res.title}</h2>
                             <h5 className="card-text">{res.description}</h5>
-                             <img src={res.image_url} alt="CodingDS IMG"></img>
+                            {res.image_url !== 'default-image.jpg' ? (
+                                <img src={res.image_url} alt="CodingDS IMG" />
+                            ) : null}
                             <button
                                 onClick={() => handlePostView(res.id)}
                                 disabled={isViewed} // Disabilita il pulsante se l'articolo è già stato visualizzato
@@ -145,7 +144,7 @@ function AllPosts() {
                                 {isViewed ? "Post already visualized" : "Visualized post"}
                             </button>
                         </div>
-                    </li>
+
                 )
             })}
         </div>

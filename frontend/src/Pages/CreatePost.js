@@ -27,7 +27,7 @@ function CreatePost() {
             })
             .then((res) => console.log("posting data", res))
             .catch((err) => console.log(err));
-        navigate("/AllPosts");
+        navigate("/");
     };
 
     return (
