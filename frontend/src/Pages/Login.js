@@ -35,7 +35,7 @@ function Login() {
                 localStorage.setItem("sessionToken", Token);
 
                 // Reindirizzamento alla pagina AllPosts.js
-                navigate("/AllPosts");
+                navigate("/");
             })
             .catch(err => console.log(err));
     }
@@ -65,7 +65,7 @@ function Login() {
             </label>
 
 
-            <input type="submit" />
+            <input className="original-button" type="submit" />
         </form>
         </div>
 

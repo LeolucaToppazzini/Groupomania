@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import logo from "./Logos/icon.png";
 import Login from './Pages/Login';
 
 import Singup from "./Pages/Singup";
@@ -14,11 +14,12 @@ import AllPosts from "./Pages/AllPosts";
  */
 function App() {
     return <Router>
-        <nav>
+        <nav className="nav-container">
             <Link to="/users/signup">Singup</Link>
             <Link to="/users/login">Login</Link>
             <Link to="/post">CreatePost</Link>
             <Link to="/">AllPosts</Link>
+            <img src={logo} alt="Logo" />
         </nav>
         <Routes>
             <Route path="/users/signup" element={<Singup />} />

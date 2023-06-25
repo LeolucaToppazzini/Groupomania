@@ -61,7 +61,7 @@ function CreatePost() {
                 />
             </label>
 
-            <input type="submit" />
+            <input className="original-button" type="submit" />
         </form>
     );
 }

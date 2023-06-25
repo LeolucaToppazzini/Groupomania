@@ -1,7 +1,8 @@
 //import './App.css';
 import axios from "axios";
-import {useEffect,useState} from "react";
+import React, {useEffect,useState} from "react";
 import {useNavigate} from "react-router-dom";
+import logo from "../Logos/icon-left-font.png";
 
 function Singup() {
     const [data, setDate] = useState([])
@@ -30,13 +31,14 @@ function Singup() {
 
         ).then(res => console.log('posting data', res)).catch(err => console.log(err))
 
-        navigate("/Login");
+        navigate("/users/login");
     }
 
 
 
     return (
         <div className="flex-container">
+            <img src={logo} alt="Logo" />
             <h2 className="mb-4">singup</h2>
         <form onSubmit={postData} className="flex-container">
             <label>Email:
@@ -57,7 +59,7 @@ function Singup() {
             </label>
 
 
-            <input type="submit" />
+            <input className="original-button" type="submit" />
         </form>
         </div>
     );

@@ -118,8 +118,8 @@ function AllPosts() {
     return (
         <div className="flex-container">
             <h2 className="mb-4">All posts</h2>
-            <button onClick={handleClearLocalStorage}>Logout</button>
-            <button onClick={deleteUser}>Delete user</button>
+            <button className="original-button" onClick={handleClearLocalStorage}>Logout</button>
+            <button className="original-button" onClick={deleteUser}>Delete user</button>
             {profile.map((res) => {
                 const isViewed = viewedPosts.some(
                     (viewpost) =>
@@ -129,15 +129,16 @@ function AllPosts() {
                 console.log(res)
                 return (
 
-                        <div className="card-body">
-                            <h5 className="mb-4">{res.user.email}</h5>
-
+                        <div className="card-body" key={res.id}>
                             <h2 className="card-title">{res.title}</h2>
-                            <h5 className="card-text">{res.description}</h5>
+                            <h3 className="mb-4">{res.user.email}</h3>
+
+                            <h4 className="card-text">{res.createdAt}</h4>
+                            <h4 className="card-text">{res.description}</h4>
                             {res.image_url !== 'default-image.jpg' ? (
                                 <img src={res.image_url} alt="CodingDS IMG" />
                             ) : null}
-                            <button
+                            <button className="original-button"
                                 onClick={() => handlePostView(res.id)}
                                 disabled={isViewed} // Disabilita il pulsante se l'articolo è già stato visualizzato
                             >
