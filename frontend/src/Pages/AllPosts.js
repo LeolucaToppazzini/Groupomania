@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect,useState} from "react";
 import {useNavigate} from "react-router-dom";
+import moment from "moment";
 
 function AllPosts() {
     const API_URI = 'http://localhost:8080/api/tutorials'
@@ -17,6 +18,10 @@ function AllPosts() {
 
         getProfiles();
     }, [viewedPostIds]);
+
+    function formatDateTime(dateTime) {
+        return moment(dateTime).format("YYYY-MM-DD HH:mm:ss");
+    }
 
 
 
@@ -133,7 +138,7 @@ function AllPosts() {
                             <h2 className="card-title">{res.title}</h2>
                             <h3 className="mb-4">{res.user.email}</h3>
 
-                            <h4 className="card-text">{res.createdAt}</h4>
+                            <h4 className="card-text">{formatDateTime(res.createdAt)}</h4>
                             <h4 className="card-text">{res.description}</h4>
                             {res.image_url !== 'default-image.jpg' ? (
                                 <img src={res.image_url} alt="CodingDS IMG" />
