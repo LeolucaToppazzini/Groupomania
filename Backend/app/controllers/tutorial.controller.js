@@ -30,15 +30,7 @@ exports.create = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
-exports.modifyTutorial = (req, res) => {
-    const tutorial = req.file ? {
-        ...JSON.parse(req.body.tutorials),
-        image_url: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    } : {...req.body}
-    db.tutorials.update({id: req.params.id}, {...tutorial, id: req.params.id})
-        .then(tutorial => res.status(200).json({ message: 'object modified'}))
-        .catch(err => res.status(400).json({ err }))
-}
+
 
 
 

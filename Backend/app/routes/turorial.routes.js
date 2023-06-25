@@ -13,7 +13,7 @@ module.exports = app => {
     router.delete("/:id",auth, tutorials.delete);
     // Retrieve all Tutorials
     router.get("/",auth, tutorials.getAllTutorials);
-    router.put("/:id",auth, tutorials.modifyTutorial);
+
 
 
 
